@@ -55,11 +55,22 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.delete_forever),
+            onPressed: () {
+              ImageSharedPrefs.emptyPrefs();
+              setState(() {
+                image = null;
+              });
+            },
+          ),
+        ],
         title: Text('Image Shared Preferences'),
       ),
       body: Center(
         child: SingleChildScrollView(
-          child: image == null ? Container() : image,
+          child: image == null ? Text('No image selected') : image,
         ),
       ),
       floatingActionButton: FloatingActionButton(

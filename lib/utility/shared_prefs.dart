@@ -14,6 +14,12 @@ class ImageSharedPrefs {
     return await prefs.setString(IMAGE_KEY, value);
   }
 
+  static Future<bool> emptyPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    return await prefs.clear();
+  }
+
   static Future<String> loadImageFromPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString(IMAGE_KEY);
